@@ -3,6 +3,7 @@ import requests
 # The API endpoint
 url = "https://jsonplaceholder.typicode.com/posts"
 
+#Body of API Request
 payload = {
     "title" : "Foo2",
     "body"  : "bar2",
