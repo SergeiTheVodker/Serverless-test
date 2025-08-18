@@ -7,5 +7,9 @@ def lambda_handler(event, context):
     # A GET request to the API
     response = requests.get(url)
 
-    # Print the response
-    print(response.json())
+    return {
+	    'statusCode': str(response.status_code) + " " + response.reason,
+        'object': response.json()
+    }
+
+print(lambda_handler("", ""))
