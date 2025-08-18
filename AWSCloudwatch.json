@@ -1,0 +1,89 @@
+{
+	"Transform": "AWS::Serverless-2016-10-31",
+	"Resources": {
+		"FunctionGet": {
+			"Type": "AWS::Serverless::Function",
+			"Properties": {
+				"Description": {
+					"Fn::Sub": [
+						"Stack ${AWS::StackName} Function ${ResourceName}",
+						{
+							"ResourceName": "FunctionGet"
+						}
+					]
+				},
+				"CodeUri": "src/FunctionGet",
+				"Handler": "handler.lambda_handler",
+				"Runtime": "python3.9",
+				"MemorySize": 3008,
+				"Timeout": 2,
+				"Tracing": "Active"
+			}
+		},
+		"FunctionGetLogGroup": {
+			"Type": "AWS::Logs::LogGroup",
+			"DeletionPolicy": "Retain",
+			"Properties": {
+				"LogGroupName": {
+					"Fn::Sub": "/aws/lambda/${FunctionGet}"
+				}
+			}
+		},
+		"FunctionPut": {
+			"Type": "AWS::Serverless::Function",
+			"Properties": {
+				"Description": {
+					"Fn::Sub": [
+						"Stack ${AWS::StackName} Function ${ResourceName}",
+						{
+							"ResourceName": "FunctionPut"
+						}
+					]
+				},
+				"CodeUri": "src/FunctionPut",
+				"Handler": "handler.lambda_handler",
+				"Runtime": "python3.9",
+				"MemorySize": 3008,
+				"Timeout": 30,
+				"Tracing": "Active"
+			}
+		},
+		"FunctionPutLogGroup": {
+			"Type": "AWS::Logs::LogGroup",
+			"DeletionPolicy": "Retain",
+			"Properties": {
+				"LogGroupName": {
+					"Fn::Sub": "/aws/lambda/${FunctionPut}"
+				}
+			}
+		},
+		"FunctionPost": {
+			"Type": "AWS::Serverless::Function",
+			"Properties": {
+				"Description": {
+					"Fn::Sub": [
+						"Stack ${AWS::StackName} Function ${ResourceName}",
+						{
+							"ResourceName": "FunctionPost"
+						}
+					]
+				},
+				"CodeUri": "src/FunctionPost",
+				"Handler": "handler.lambda_handler",
+				"Runtime": "python3.9",
+				"MemorySize": 3008,
+				"Timeout": 30,
+				"Tracing": "Active"
+			}
+		},
+		"FunctionPostLogGroup": {
+			"Type": "AWS::Logs::LogGroup",
+			"DeletionPolicy": "Retain",
+			"Properties": {
+				"LogGroupName": {
+					"Fn::Sub": "/aws/lambda/${FunctionPost}"
+				}
+			}
+		}
+	}
+}
