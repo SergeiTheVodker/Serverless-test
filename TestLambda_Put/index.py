@@ -14,4 +14,7 @@ def lambda_handler(event, context):
 
     response = requests.put(url, payload)
 
-    print(response.json())
+    return {
+	    'statusCode': str(response.status_code) + " " + response.reason,
+        'object': response.json()
+    }
