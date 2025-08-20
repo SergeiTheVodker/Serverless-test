@@ -11,5 +11,3 @@ def lambda_handler(event, context):
 	    'statusCode': str(response.status_code) + " " + response.reason,
         'object': response.json()
     }
-
-print(lambda_handler("", ""))
