@@ -1,0 +1,49 @@
+# "org" ensures this Service is used with the correct Serverless Framework Access Key.
+org: sargedines
+# "app" enables Serverless Framework Dashboard features and sharing them with other Services.
+app: serverless-miniproject
+# "service" is the name of this project. This will also be added to your AWS resource names.
+service: serverless-mini-project
+
+provider:
+  name: aws
+  runtime: python3.12
+  # Uncomment to easily set up a custom domain. Read the docs for more details:
+  # https://www.serverless.com/framework/docs/providers/aws/guide/domains
+  # domain: api.example.com
+
+layers:
+  requests2:
+    path: requests-layer
+    description: the requests library for python
+    compatibleRuntimes: 
+      - python3.12
+
+functions:
+  FunctionGet:
+    handler: TestLambda_Get.index.lambda_handler
+    timeout: 10
+    layers:
+      - !Ref Requests2LambdaLayer
+    events:
+      - httpApi:
+          path: /
+          method: get
+  FunctionPut:
+    handler: TestLambda_Put.index.lambda_handler
+    timeout: 10
+    layers:
+      - !Ref Requests2LambdaLayer
+    events:
+      - httpApi:
+          path: /
+          method: put
+  FunctionPost:
+    handler: TestLambda_Post.index.lambda_handler
+    timeout: 10
+    layers:
+      - !Ref Requests2LambdaLayer
+    events:
+      - httpApi:
+          path: /
+          method: post
