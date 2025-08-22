@@ -1,4 +1,5 @@
 import requests
+import json
 
 def lambda_handler(event, context):
     #REST URI
@@ -14,7 +15,15 @@ def lambda_handler(event, context):
 
     response = requests.put(url, payload)
 
+    result = {
+        "reason": response.reason,
+        "object": response.json()
+    }
+
     return {
-	    'statusCode': str(response.status_code) + " " + response.reason,
-        'object': response.json()
+        "statusCode": response.status_code,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "body": json.dumps(result)  # convert dict → string
     }

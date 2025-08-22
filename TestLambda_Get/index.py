@@ -1,4 +1,5 @@
 import requests
+import json
 
 def lambda_handler(event, context):
     # The API endpoint
@@ -7,7 +8,15 @@ def lambda_handler(event, context):
     # A GET request to the API
     response = requests.get(url)
 
+    result = {
+        "reason": response.reason,
+        "object": response.json()
+    }
+
     return {
-	    'statusCode': str(response.status_code) + " " + response.reason,
-        'object': response.json()
+        "statusCode": response.status_code,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "body": json.dumps(result)  # convert dict → string
     }
