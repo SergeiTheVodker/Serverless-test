@@ -1,0 +1,20 @@
+[
+    {
+        "endpoint" : "dev/users",
+        "method" : "GET",
+        "target_uri" : "https://jsonplaceholder.typicode.com/posts/1",
+        "allowed" : true
+    } ,
+    {
+        "endpoint" : "dev/users",
+        "method" : "POST",
+        "target_uri" : "https://jsonplaceholder.typicode.com/posts",
+        "allowed" : true
+    },
+    {
+        "endpoint" : "dev/users",
+        "method" : "PUT",
+        "target_uri" : "https://jsonplaceholder.typicode.com/posts/1",
+        "allowed" : true
+    }
+]
