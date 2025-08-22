@@ -27,7 +27,7 @@ functions:
       - !Ref Requests2LambdaLayer
     events:
       - httpApi:
-          path: /
+          path: /get
           method: get
   FunctionPut:
     handler: TestLambda_Put.index.lambda_handler
@@ -36,7 +36,7 @@ functions:
       - !Ref Requests2LambdaLayer
     events:
       - httpApi:
-          path: /
+          path: /put
           method: put
   FunctionPost:
     handler: TestLambda_Post.index.lambda_handler
@@ -45,5 +45,5 @@ functions:
       - !Ref Requests2LambdaLayer
     events:
       - httpApi:
-          path: /
+          path: /post
           method: post
