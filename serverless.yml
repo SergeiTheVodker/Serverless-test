@@ -8,6 +8,11 @@ service: serverless-mini-project
 provider:
   name: aws
   runtime: python3.12
+  httpApi:
+    authorizers:
+      customAuthorizer:
+        type: request
+        functionName: FunctionAuthorizer
   # Uncomment to easily set up a custom domain. Read the docs for more details:
   # https://www.serverless.com/framework/docs/providers/aws/guide/domains
   # domain: api.example.com
@@ -20,6 +25,8 @@ layers:
       - python3.12
 
 functions:
+  FunctionAuthorizer:
+    handler: TestLambda_Authorizer.index.lambda_handler
   FunctionGet:
     handler: TestLambda_Get.index.lambda_handler
     timeout: 10
@@ -29,6 +36,8 @@ functions:
       - httpApi:
           path: /get
           method: get
+          authorizer:
+            name: customAuthorizer
   FunctionPut:
     handler: TestLambda_Put.index.lambda_handler
     timeout: 10
@@ -38,6 +47,8 @@ functions:
       - httpApi:
           path: /put
           method: put
+          authorizer:
+            name: customAuthorizer
   FunctionPost:
     handler: TestLambda_Post.index.lambda_handler
     timeout: 10
@@ -47,3 +58,6 @@ functions:
       - httpApi:
           path: /post
           method: post
+          authorizer:
+            name: customAuthorizer
+  
