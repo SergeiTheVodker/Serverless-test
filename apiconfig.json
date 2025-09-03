@@ -1,18 +1,18 @@
 [
     {
-        "endpoint" : "dev/users",
+        "path" : "/get/api-test",
         "method" : "GET",
         "target_uri" : "https://jsonplaceholder.typicode.com/posts/1",
         "allowed" : true
     } ,
     {
-        "endpoint" : "dev/users",
+        "path" : "/post/api-test",
         "method" : "POST",
         "target_uri" : "https://jsonplaceholder.typicode.com/posts",
         "allowed" : true
     },
     {
-        "endpoint" : "dev/users",
+        "path" : "/put/api-test",
         "method" : "PUT",
         "target_uri" : "https://jsonplaceholder.typicode.com/posts/1",
         "allowed" : true
