@@ -41,9 +41,21 @@ functions:
       - http:
           path: /get/api-test
           method: get
+  ApiPost:
+    handler: app.index.common_handler
+    timeout: 10
+    layers:
+      - !Ref Requests2LambdaLayer
+    events:
       - http:
           path: /post/api-test
           method: post
+  ApiPut:
+    handler: app.index.common_handler
+    timeout: 10
+    layers:
+      - !Ref Requests2LambdaLayer
+    events:
       - http:
           path: /put/api-test
           method: put
