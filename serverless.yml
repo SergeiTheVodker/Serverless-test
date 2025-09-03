@@ -30,8 +30,8 @@ layers:
       - python3.12
 
 functions:
-  ##auth:
-  ##handler: TestLambda_Authorizer.index.lambda_handler
+  auth:
+    handler: TestLambda_Authorizer.index.lambda_handler
   ApiGet:
     handler: app.index.common_handler
     timeout: 10
@@ -41,6 +41,7 @@ functions:
       - http:
           path: /get/api-test
           method: get
+          authorizer: auth
   ApiPost:
     handler: app.index.common_handler
     timeout: 10
@@ -50,6 +51,7 @@ functions:
       - http:
           path: /post/api-test
           method: post
+          authorizer: auth
   ApiPut:
     handler: app.index.common_handler
     timeout: 10
@@ -59,5 +61,6 @@ functions:
       - http:
           path: /put/api-test
           method: put
+          authorizer: auth
 
       
