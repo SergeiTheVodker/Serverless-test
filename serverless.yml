@@ -62,5 +62,14 @@ functions:
           path: /put/api-test
           method: put
           authorizer: auth
+  SoapGet:
+    handler: app.soap.lambda_handler
+    timeout: 10
+    layers:
+      - !Ref Requests2LambdaLayer
+    events:
+      - http:
+          path: /post/soap-test
+          method: post
 
       
